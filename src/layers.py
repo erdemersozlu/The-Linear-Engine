@@ -1,8 +1,7 @@
 import numpy as np
 
 class DenseLayer:
-    def __init__(self, input_size, output_size):
-        # Xavier Initialization
+    def __init__(self, input_size, output_size):# Xavier Initialization
         limit = np.sqrt(6 / (input_size + output_size))
         self.weights = np.random.uniform(-limit, limit, (input_size, output_size))
         self.biases = np.zeros((1, output_size))
@@ -12,9 +11,9 @@ class DenseLayer:
         return np.dot(self.input, self.weights) + self.biases
 
     def backward(self, output_gradient, learning_rate):
-        # 1. Ağırlıklar için hata (dW)
+        # 1. Ağırlıklar için hata (dW) - Error for Weights 
         weights_gradient = np.dot(self.input.T, output_gradient)
-        # 2. Girdi için hata (Bir önceki katmana aktarılacak olan)
+        # 2. Girdi için hata (Bir önceki katmana aktarılacak olan) - Error for inputs
         input_gradient = np.dot(output_gradient, self.weights.T)
         
         # Ağırlıkları güncelle (Gradient Descent)

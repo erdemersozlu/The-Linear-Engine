@@ -11,8 +11,8 @@ class ActivationLayer:
         return self.activation(self.input)
 
     def backward(self, output_gradient, learning_rate):
-        # Zincir kuralı: Hata * Aktivasyonun Türevi
         return output_gradient * self.derivative(self.input)
+     # Chain Rule:Error * Derivative of Activation (Zincir kuralı: Hata * Aktivasyonun Türevi)
 
 # Kullanacağımız fonksiyonlar
 def sigmoid(x): return 1 / (1 + np.exp(-x))
